@@ -1,19 +1,20 @@
-import  {IncomingMessage, ServerResponse, STATUS_CODES} from 'http';
+import { IncomingMessage, ServerResponse, STATUS_CODES } from 'http';
 import { serviceListEpisodes } from '../services/list-episodes-service';
 import { serviceFilterEpisodes } from '../services/filter-episodes-service';
-import { StatusCode } from '../utils/status-code';
+import { PodcastTransferModel } from '../models/podcast-transfer-model';
 
-export const getListEpisodes = async (req: IncomingMessage, res: ServerResponse) =>{
+export const getListEpisodes = async (req: IncomingMessage, res: ServerResponse) => {
     const content = await serviceListEpisodes();
-   
-    res.writeHead(StatusCode.OK, {'Content-Type': 'application/json'});
-    res.end(JSON.stringify(content));
+
+    res.writeHead(content.statusCode, { 'Content-Type': 'application/json' });
+    res.write(JSON.stringify(content));
+    res.end();
 };
 
-export const getFilterEpisodes = async(req: IncomingMessage, res: ServerResponse) =>{
+export const getFilterEpisodes = async (req: IncomingMessage, res: ServerResponse) => {
 
-    
-    const content = await serviceFilterEpisodes(req.url);
-    res.writeHead(StatusCode.OK, {"Content-Type": "application/json"});
-    res.end(JSON.stringify(content));
+    const content: PodcastTransferModel = await serviceFilterEpisodes(req.url);
+    res.writeHead(content.statusCode, { "Content-Type": "application/json" });
+    res.write(JSON.stringify(content.body));
+    res.end();
 }

@@ -90,16 +90,34 @@ GET /api/list
 
 ```json
 [
-  {
-    "podcastName": "Flow Podcast",
-    "episode": "Inteligência Artificial",
-    "videoId": "abc123"
-  },
-  {
-    "podcastName": "Podpah",
-    "episode": "Histórias da Internet",
-    "videoId": "xyz789"
-  }
+    {
+        "podcastName": "Flow",
+        "episode": "CBUM - Flow #319",
+        "videoId": "pQSuQmUfS30",
+        "categories": [
+            "saúde",
+            "bodybuilder",
+            "esporte"
+        ]
+    },
+    {
+        "podcastName": "Flow",
+        "episode": "RUBENS BARRICHELLO - Flow #339",
+        "videoId": "4KDGTdiOV4I",
+        "categories": [
+            "corrida",
+            "esporte"
+        ]
+    },
+    {
+        "podcastName": "Podpah",
+        "episode": "RUBENS BARRICHELLO - Flow #339",
+        "videoId": "4KDGTdiOV4I",
+        "categories": [
+            "corrida",
+            "esporte"
+        ]
+    }
 ]
 ```
 
@@ -123,11 +141,15 @@ GET /api/episode?p=flow
 
 ```json
 [
-  {
-    "podcastName": "Flow Podcast",
-    "episode": "Inteligência Artificial",
-    "videoId": "abc123"
-  }
+    {
+        "podcastName": "Flow",
+        "episode": "RUBENS BARRICHELLO - Flow #339",
+        "videoId": "4KDGTdiOV4I",
+        "categories": [
+            "corrida",
+            "esporte"
+        ]
+    },
 ]
 ```
 
